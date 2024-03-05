@@ -10,8 +10,8 @@ import java.time.ZonedDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ApiException {
-    private final String msq;
+class ApiExceptionMessage {
+    private final String msg;
     private final HttpStatus httpStatus;
     private final ZonedDateTime zonedDateTime;
 }

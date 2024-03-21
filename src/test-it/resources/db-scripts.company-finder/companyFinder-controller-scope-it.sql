@@ -1,0 +1,1 @@
+INSERT INTO scope (id, value) VALUES (1, 10), (2,25);

@@ -22,7 +22,7 @@ class UserAccountRegistrationAccountEntity {
     @NonNull
     private String mail;
 
-    private String phone;
+    private String phoneNumber;
 
     @NonNull
     private String password;
@@ -40,7 +40,7 @@ class UserAccountRegistrationAccountEntity {
 
         return UserAccountRegistrationAccountEntity.builder()
                 .mail(userDAO.getMail())
-                .phone(userDAO.getPhoneNumber())
+                .phoneNumber(userDAO.getPhoneNumber())
                 .password(passwordEncoder.encode(userDAO.getPassword()))
                 .accountType(userDAO.getAccountType())
                 .addedDate(Date.valueOf(LocalDate.now()))

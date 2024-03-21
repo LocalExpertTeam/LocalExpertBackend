@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.jdbc.Sql;
@@ -33,7 +34,7 @@ class UserAccountRegistrationServiceIT {
     static MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:latest");
 
     public static final String COMPANY_NAME = "Bulldozaur sp. z o.o.";
-    public static final String NIP = "101030486";
+    public static final String NIP = "1010304866";
     public static final String NEW_USER_EMAIL = "paul@gmail.com";
     public static final String EXISTING_USER_EMAIL = "mat@gmail.com";
     public static final String USER_PASSWORD = "Password123*";
@@ -48,6 +49,10 @@ class UserAccountRegistrationServiceIT {
     private UserAccountRegistrationCompanyRepository companyRepository;
     @Autowired
     private UserAccountRegistrationCustomerRepository customerRepository;
+    @Autowired
+    private UserAccountRegistrationConfirmationCodeRepository confirmationCodeRepository;
+    @Autowired
+    private ApplicationEventPublisher publisher;
 
     @BeforeAll
     static void beforeAll() {
@@ -64,7 +69,9 @@ class UserAccountRegistrationServiceIT {
     @Transactional
     void shouldSaveNewCustomerAccount() {
         //Given
-        UserAccountRegistrationService service = new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+        UserAccountRegistrationService service =
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         //When
@@ -82,7 +89,7 @@ class UserAccountRegistrationServiceIT {
         assertEquals(NEW_USER_EMAIL, createdAccount.getMail());
         assertTrue(passwordEncoder.matches(USER_PASSWORD, createdAccount.getPassword()));
         assertEquals(AccountType.CUSTOMER, createdAccount.getAccountType());
-        assertEquals(PHONE_NUMBER, createdAccount.getPhone());
+        assertEquals(PHONE_NUMBER, createdAccount.getPhoneNumber());
     }
 
     @Test
@@ -90,7 +97,9 @@ class UserAccountRegistrationServiceIT {
     @Transactional
     void shouldSaveNewCompanyAccount() {
         //Given
-        UserAccountRegistrationService service = new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+        UserAccountRegistrationService service =
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         //When
@@ -110,7 +119,7 @@ class UserAccountRegistrationServiceIT {
         assertEquals(NEW_USER_EMAIL, createdAccount.getMail());
         assertTrue(passwordEncoder.matches(USER_PASSWORD, createdAccount.getPassword()));
         assertEquals(AccountType.COMPANY, createdAccount.getAccountType());
-        assertEquals(PHONE_NUMBER, createdAccount.getPhone());
+        assertEquals(PHONE_NUMBER, createdAccount.getPhoneNumber());
     }
 
     @Test
@@ -118,7 +127,9 @@ class UserAccountRegistrationServiceIT {
     @Transactional
     void shouldThrowExceptionWhenEmailIsAlreadyInUse() {
         //Given
-        UserAccountRegistrationService service = new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+        UserAccountRegistrationService service =
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =
@@ -144,7 +155,8 @@ class UserAccountRegistrationServiceIT {
     void shouldThrowExceptionWhenEmailInWrongFormat(String email) {
         //Given
         UserAccountRegistrationService service =
-                new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =
@@ -169,7 +181,9 @@ class UserAccountRegistrationServiceIT {
     @Transactional
     void shouldThrowExceptionWhenPasswordInWrongFormat(String password, String exceptionMessage) {
         //Given
-        UserAccountRegistrationService service = new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+        UserAccountRegistrationService service =
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =
@@ -193,7 +207,9 @@ class UserAccountRegistrationServiceIT {
     @Transactional
     void shouldThrowExceptionWhenAccountTypeNotProvided() {
         //Given
-        UserAccountRegistrationService service = new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+        UserAccountRegistrationService service =
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =
@@ -216,7 +232,9 @@ class UserAccountRegistrationServiceIT {
     @Transactional
     void shouldThrowExceptionWhenUserFirstNameNotProvided() {
         //Given
-        UserAccountRegistrationService service = new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+        UserAccountRegistrationService service =
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =
@@ -239,7 +257,9 @@ class UserAccountRegistrationServiceIT {
     @Transactional
     void shouldThrowExceptionWhenUserLastNameNotProvided() {
         //Given
-        UserAccountRegistrationService service = new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+        UserAccountRegistrationService service =
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =
@@ -263,7 +283,8 @@ class UserAccountRegistrationServiceIT {
     void shouldThrowExceptionWhenTooLongPhoneProvided() {
         //Given
         UserAccountRegistrationService service =
-                new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =
@@ -288,7 +309,8 @@ class UserAccountRegistrationServiceIT {
     void shouldThrowExceptionWhenCompanyNameNotProvided() {
         //Given
         UserAccountRegistrationService service =
-                new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =
@@ -314,7 +336,8 @@ class UserAccountRegistrationServiceIT {
     void shouldThrowExceptionWhenCompanyNipNotProvided() {
         //Given
         UserAccountRegistrationService service =
-                new UserAccountRegistrationService(repository, customerRepository, companyRepository);
+                new UserAccountRegistrationService(repository, customerRepository, companyRepository,
+                                                    confirmationCodeRepository, publisher);
 
         //When
         ApiRequestException exception =

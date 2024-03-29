@@ -9,7 +9,7 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
-@Entity(name = "register-page-confirmation_code-entity")
+@Entity(name = "registration-confirmation-code-entity")
 @Table(name = "confirmation_code")
 @Builder
 @NoArgsConstructor

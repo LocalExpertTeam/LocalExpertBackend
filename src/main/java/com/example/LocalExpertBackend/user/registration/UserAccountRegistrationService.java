@@ -1,9 +1,14 @@
 package com.example.LocalExpertBackend.user.registration;
 
 import com.example.LocalExpertBackend.exception.ApiRequestException;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.apache.commons.validator.routines.EmailValidator;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.util.Locale;
 
 @AllArgsConstructor
 @Service
@@ -12,7 +17,10 @@ class UserAccountRegistrationService {
     private UserAccountRegistrationAccountRepository repository;
     private UserAccountRegistrationCustomerRepository customerRepository;
     private UserAccountRegistrationCompanyRepository companyRepository;
+    private UserAccountRegistrationConfirmationCodeRepository confirmationCodeRepository;
+    private ApplicationEventPublisher publisher;
 
+    @Transactional
     public void createNewUserAccount(UserDAO user) {
 
         validateAccountData(user);
@@ -35,10 +43,24 @@ class UserAccountRegistrationService {
             entity.setAccount(accountEntity);
             companyRepository.save(entity);
         }
+
+        int codeLength = 4;
+        String activationCode = NumericCodeGenerator.getNumericCode(codeLength);
+        saveCodeForUser(accountEntity, activationCode);
+        publisher.publishEvent(new OnRegistrationCompleteEvent(user, activationCode, Locale.getDefault()));
+    }
+
+    private void saveCodeForUser(UserAccountRegistrationAccountEntity accountEntity, String token) {
+        UserAccountRegistrationConfirmationCodeEntity confirmationCodeEntity =
+                UserAccountRegistrationConfirmationCodeEntity.builder()
+                                                            .confirmationCode(token)
+                                                            .user(accountEntity)
+                                                            .build();
+        confirmationCodeRepository.save(confirmationCodeEntity);
     }
 
     private void validateAccountData(UserDAO user) {
-        if (!EmailValidator.isInEmailFormat(user.getMail())) {
+        if (!EmailValidator.getInstance().isValid(user.getMail())) {
             throw new WrongEmailFormatException("Email address has given in wrong format.");
         }
 

@@ -1,5 +1,6 @@
 package com.example.LocalExpertBackend.user.registration;
 
+import com.example.LocalExpertBackend.enums.AccountType;
 import com.example.LocalExpertBackend.exception.ApiRequestException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

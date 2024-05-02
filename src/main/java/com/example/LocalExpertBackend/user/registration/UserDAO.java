@@ -1,5 +1,6 @@
 package com.example.LocalExpertBackend.user.registration;
 
+import com.example.LocalExpertBackend.enums.AccountType;
 import lombok.Builder;
 import lombok.Getter;
 

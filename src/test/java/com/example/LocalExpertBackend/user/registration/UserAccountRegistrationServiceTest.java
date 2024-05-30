@@ -1,5 +1,6 @@
 package com.example.LocalExpertBackend.user.registration;
 
+import com.example.LocalExpertBackend.enums.AccountType;
 import com.example.LocalExpertBackend.exception.ApiRequestException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

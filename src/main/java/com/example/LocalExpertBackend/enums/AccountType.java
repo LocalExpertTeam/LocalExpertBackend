@@ -1,11 +1,11 @@
-package com.example.LocalExpertBackend.user.registration;
+package com.example.LocalExpertBackend.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-enum AccountType {
+public enum AccountType {
     CUSTOMER,
     COMPANY,
     COMPANY_PREMIUM

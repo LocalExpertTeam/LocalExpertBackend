@@ -1,6 +1,5 @@
 package com.example.LocalExpertBackend.company.companyPage;
 
-import com.example.LocalExpertBackend.companyFinder.ServiceEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class CompanyPageController {
     private CompanyPageCompanyRepository companyPageCompanyRepository;
     private CompanyPageCompanyRegionsRepository companyPageCompanyRegionsRepository;
@@ -27,11 +22,11 @@ public class CompanyPageController {
 
     private CompanyPageObject companyPageObject;
 
-    public CompanyPageController(CompanyPageCompanyRepository companyPageCompanyRepository, CompanyPageCompanyRegionsRepository companyPageCompanyRegionsRepository, CompanyPagePriceListRepository companyPagePriceListRepository,CompanyPageCompanyServiceRepository companyPageCompanyServiceRepository){
-        this.companyPageCompanyRepository=companyPageCompanyRepository;
-        this.companyPageCompanyRegionsRepository=companyPageCompanyRegionsRepository;
-        this.companyPagePriceListRepository=companyPagePriceListRepository;
-        this.companyPageCompanyServiceRepository=companyPageCompanyServiceRepository;
+    public CompanyPageController(CompanyPageCompanyRepository companyPageCompanyRepository, CompanyPageCompanyRegionsRepository companyPageCompanyRegionsRepository, CompanyPagePriceListRepository companyPagePriceListRepository, CompanyPageCompanyServiceRepository companyPageCompanyServiceRepository) {
+        this.companyPageCompanyRepository = companyPageCompanyRepository;
+        this.companyPageCompanyRegionsRepository = companyPageCompanyRegionsRepository;
+        this.companyPagePriceListRepository = companyPagePriceListRepository;
+        this.companyPageCompanyServiceRepository = companyPageCompanyServiceRepository;
     }
 
     @GetMapping("/company-page/{id}")

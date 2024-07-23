@@ -10,6 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "city")
 public class CompanyPageCityEntity {
     @JsonIgnore

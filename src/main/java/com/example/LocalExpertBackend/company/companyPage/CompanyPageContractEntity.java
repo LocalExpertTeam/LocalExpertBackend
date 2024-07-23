@@ -2,7 +2,10 @@ package com.example.LocalExpertBackend.company.companyPage;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NonNull;
 
 @Builder
 @AllArgsConstructor

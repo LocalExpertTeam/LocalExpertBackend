@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "price_list")
 public class CompanyPagePriceListEntity {
     @JsonIgnore

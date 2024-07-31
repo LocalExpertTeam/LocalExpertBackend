@@ -6,7 +6,6 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.sql.Date;
 import java.util.Collection;
 import java.util.Set;
 
@@ -16,10 +15,8 @@ public class CustomUserDetails implements UserDetails {
 
     private Long id;
     private String mail;
-    private String phoneNumber;
     private String password;
     private AccountType accountType;
-    private Date addedDate;
     private boolean isActive;
 
     @Override

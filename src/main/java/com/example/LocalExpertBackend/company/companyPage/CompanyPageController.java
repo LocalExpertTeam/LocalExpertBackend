@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @RestController
 public class CompanyPageController {
     private CompanyPageCompanyRepository companyPageCompanyRepository;

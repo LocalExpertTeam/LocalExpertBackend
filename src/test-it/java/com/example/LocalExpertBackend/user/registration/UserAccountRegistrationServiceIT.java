@@ -90,7 +90,6 @@ class UserAccountRegistrationServiceIT {
         assertEquals(NEW_USER_EMAIL, createdAccount.getMail());
         assertTrue(passwordEncoder.matches(USER_PASSWORD, createdAccount.getPassword()));
         assertEquals(AccountType.CUSTOMER, createdAccount.getAccountType());
-        assertEquals(PHONE_NUMBER, createdAccount.getPhoneNumber());
     }
 
     @Test
@@ -120,7 +119,6 @@ class UserAccountRegistrationServiceIT {
         assertEquals(NEW_USER_EMAIL, createdAccount.getMail());
         assertTrue(passwordEncoder.matches(USER_PASSWORD, createdAccount.getPassword()));
         assertEquals(AccountType.COMPANY, createdAccount.getAccountType());
-        assertEquals(PHONE_NUMBER, createdAccount.getPhoneNumber());
     }
 
     @Test

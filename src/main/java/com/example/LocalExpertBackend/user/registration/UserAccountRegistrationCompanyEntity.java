@@ -3,6 +3,9 @@ package com.example.LocalExpertBackend.user.registration;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,6 +41,9 @@ public class UserAccountRegistrationCompanyEntity {
     @NonNull
     private String contactMail;
 
+    @NonNull
+    private Date creationDate;
+
     @OneToOne(fetch = FetchType.LAZY)
     private UserAccountRegistrationAccountEntity account;
 
@@ -50,6 +56,7 @@ public class UserAccountRegistrationCompanyEntity {
                                                     .ownerLastName(user.getLastName())
                                                     .nip(user.getNip())
                                                     .contactMail(user.getMail())
+                                                    .creationDate(Date.valueOf(LocalDate.now()))
                                                     .build();
         if (user.getKrs() != null) {
             companyEntity.setKrs(user.getKrs());

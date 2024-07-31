@@ -3,6 +3,9 @@ package com.example.LocalExpertBackend.user.registration;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,6 +24,10 @@ public class UserAccountRegistrationCustomerEntity {
     @NonNull
     private String lastName;
 
+    private String phone;
+
+    @NonNull
+    private Date creationDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     private UserAccountRegistrationAccountEntity account;
@@ -30,6 +37,8 @@ public class UserAccountRegistrationCustomerEntity {
         return UserAccountRegistrationCustomerEntity.builder()
                                                     .firstName(user.getFirstName())
                                                     .lastName(user.getLastName())
+                                                    .phone(user.getPhoneNumber())
+                                                    .creationDate(Date.valueOf(LocalDate.now()))
                                                     .build();
     }
 }

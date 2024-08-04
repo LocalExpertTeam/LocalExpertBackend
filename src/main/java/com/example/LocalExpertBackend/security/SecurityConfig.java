@@ -21,7 +21,8 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
-                            .requestMatchers("/login", "/register", "/confirm", "/company-finder").permitAll()
+                            .requestMatchers("/login", "/register", "/confirm",
+                                    "/company-finder", "/company-list/**").permitAll()
                             .requestMatchers("/logout", "/current-user").authenticated()
                             .anyRequest().denyAll());
         http.logout(logout -> logout.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()));

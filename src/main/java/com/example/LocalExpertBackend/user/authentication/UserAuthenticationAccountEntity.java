@@ -4,8 +4,6 @@ import com.example.LocalExpertBackend.enums.AccountType;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
-
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,8 +19,6 @@ public class UserAuthenticationAccountEntity {
     @NonNull
     private String mail;
 
-    private String phoneNumber;
-
     @NonNull
     private String password;
 
@@ -34,15 +30,10 @@ public class UserAuthenticationAccountEntity {
     @Column(columnDefinition = "boolean default false")
     private boolean isActive = false;
 
-    @NonNull
-    private Date addedDate;
-
     public CustomUserDetails toCustomUserDetails() {
         return CustomUserDetails.builder().id(id)
                                     .accountType(accountType)
                                     .isActive(isActive)
-                                    .phoneNumber(phoneNumber)
-                                    .addedDate(addedDate)
                                     .mail(mail)
                                     .password(password)
                                     .build();

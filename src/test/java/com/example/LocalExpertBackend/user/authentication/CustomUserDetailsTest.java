@@ -12,14 +12,12 @@ class CustomUserDetailsTest {
 
     private final static Long ID = 1L;
     private final static String MAIL = "lolek@gmail.com";
-    private final static String PHONE_NUMBER = "555555555";
     private final static String PASSWORD = "Password123*";
     private final static AccountType ACCOUNT_TYPE = AccountType.CUSTOMER;
-    private final static Date ADDED_DATE = Date.valueOf("2015-03-31");
     private final static CustomUserDetails ACTIVE_USER =
-            new CustomUserDetails(ID, MAIL, PHONE_NUMBER, PASSWORD, ACCOUNT_TYPE, ADDED_DATE, true);
+            new CustomUserDetails(ID, MAIL, PASSWORD, ACCOUNT_TYPE, true);
     private final static CustomUserDetails INACTIVE_USER =
-            new CustomUserDetails(ID, MAIL, PHONE_NUMBER, PASSWORD, ACCOUNT_TYPE, ADDED_DATE, false);
+            new CustomUserDetails(ID, MAIL, PASSWORD, ACCOUNT_TYPE, false);
 
     @Test
     void userShouldBeActive() {

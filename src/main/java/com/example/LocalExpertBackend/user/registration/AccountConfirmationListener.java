@@ -19,7 +19,6 @@ public class AccountConfirmationListener implements ApplicationListener<OnRegist
     private final MessageSource messages;
     private final JavaMailSender mailSender;
 
-
     @Override
     public void onApplicationEvent(@NonNull OnRegistrationCompleteEvent event) {
         try {
@@ -50,8 +49,13 @@ public class AccountConfirmationListener implements ApplicationListener<OnRegist
 
     private String getEmailContent(String activationCode, OnRegistrationCompleteEvent event) {
         String headerText = messages.getMessage("confirmation-email-header-text", null, event.getLocale());
+        String instructionText = messages.getMessage("confirmation-email-instruction-text", null, event.getLocale());
         String endText = messages.getMessage("confirmation-email-end-text", null, event.getLocale());
 
-        return headerText + "\n" + activationCode + "\n" + endText; //TODO we need a nice look of mail message.
+        String messageBody = MessageLoader.getMessageBody();
+        return messageBody.replace("XXXX", activationCode)
+                            .replace("header-text", headerText)
+                            .replace("instruction-text", instructionText)
+                            .replace("end-text", endText);
     }
 }

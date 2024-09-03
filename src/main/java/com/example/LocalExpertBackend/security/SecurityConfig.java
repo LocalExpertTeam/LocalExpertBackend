@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
                             .requestMatchers("/login", "/register", "/confirm",
-                                    "/company-finder", "/company-list/**").permitAll()
+                                    "/company-finder", "/company-list/**", "/comments-about-customer/**").permitAll()
                             .requestMatchers("/logout", "/current-user").authenticated()
                             .anyRequest().denyAll());
         http.logout(logout -> logout.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()));

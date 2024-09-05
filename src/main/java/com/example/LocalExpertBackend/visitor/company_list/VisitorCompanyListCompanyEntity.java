@@ -26,7 +26,7 @@ public class VisitorCompanyListCompanyEntity {
     private String profile;
 
     @OneToMany
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "companyId")
     private List<VisitorCompanyListRegionEntity> regions;
 
     @OneToMany

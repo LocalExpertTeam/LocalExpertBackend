@@ -28,7 +28,7 @@ public class CompanyPageCompanyEntity {
     private String gallery;
 
     @NonNull
-    private Date addedDate;
+    private Date creationDate;
 
     @NonNull
     private Boolean hasFreeCommute;

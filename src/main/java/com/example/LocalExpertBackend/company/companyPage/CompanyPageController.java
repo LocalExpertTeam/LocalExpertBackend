@@ -1,9 +1,5 @@
 package com.example.LocalExpertBackend.company.companyPage;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @RestController
 public class CompanyPageController {
     private CompanyPageCompanyRepository companyPageCompanyRepository;
@@ -38,9 +30,9 @@ public class CompanyPageController {
         if (companyPageCompanyRepository.findById(id).isEmpty()) {
             return new ResponseEntity<>("", HttpStatus.NOT_FOUND);
         }
-        List<CompanyPageCompanyRegionsEntity> CompanyRegionsList = companyPageCompanyRegionsRepository.findByCompanyId(id);
+        List<CompanyPageCompanyRegionEntity> CompanyRegionsList = companyPageCompanyRegionsRepository.findByCompanyId(id);
         List<RegionsObject> regionsList = new ArrayList<>();
-        for (CompanyPageCompanyRegionsEntity companyRegions : CompanyRegionsList.toArray(new CompanyPageCompanyRegionsEntity[0])) {
+        for (CompanyPageCompanyRegionEntity companyRegions : CompanyRegionsList.toArray(new CompanyPageCompanyRegionEntity[0])) {
             RegionsObject regionsObject = new RegionsObject(companyRegions.getCity().getValue(), companyRegions.getCity().getProvince().getName());
             regionsList.add(regionsObject);
         }

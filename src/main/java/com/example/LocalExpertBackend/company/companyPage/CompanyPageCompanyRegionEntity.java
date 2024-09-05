@@ -9,8 +9,8 @@ import lombok.*;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "company_regions")
-public class CompanyPageCompanyRegionsEntity {
+@Table(name = "company_region")
+public class CompanyPageCompanyRegionEntity {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

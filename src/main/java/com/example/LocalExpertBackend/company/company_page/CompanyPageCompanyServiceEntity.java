@@ -1,28 +1,27 @@
-package com.example.LocalExpertBackend.company.companyPage;
+package com.example.LocalExpertBackend.company.company_page;
 
-import com.example.LocalExpertBackend.companyFinder.ProvinceEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-
 
 @Builder
 @AllArgsConstructor
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "city")
-public class CompanyPageCityEntity {
+@Table(name = "company_service")
+public class CompanyPageCompanyServiceEntity {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @NonNull
-    private String value;
+    private Long companyId;
 
     @ManyToOne
-    @JoinColumn(name = "province_id")
-    private ProvinceEntity province;
-}
+    @JoinColumn(name = "service_id")
+    private CompanyPageServiceEntity service;
 
+}

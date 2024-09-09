@@ -1,4 +1,4 @@
-package com.example.LocalExpertBackend.company.companyPage;
+package com.example.LocalExpertBackend.company.company_page;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -6,18 +6,25 @@ import lombok.*;
 
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Entity
-@Table(name = "contract")
-public class CompanyPageContractEntity {
+@NoArgsConstructor
+@Table(name = "price_list")
+public class CompanyPagePriceListEntity {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
+    private String serviceName;
+
+    @JsonIgnore
+    @NonNull
     private Long companyId;
 
-    private String companyCommentId;
+    private Integer priceMin;
+
+    private Integer priceMax;
+
 }

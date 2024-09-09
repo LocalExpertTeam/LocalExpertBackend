@@ -1,7 +1,5 @@
-package com.example.LocalExpertBackend.companyPage;
+package com.example.LocalExpertBackend.company.company_page;
 
-import com.example.LocalExpertBackend.company.companyPage.*;
-import com.example.LocalExpertBackend.companyFinder.CompanyFinderController;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -11,17 +9,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
-public class companyPageIT {
+class CompanyPageIT {
     @Container
     @ServiceConnection
     static MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:latest");
@@ -50,14 +48,15 @@ public class companyPageIT {
     void doesFindUnfoundable() {
         CompanyPageController companyPageController = new CompanyPageController(companyPageCompanyRepository, companyPageCompanyRegionsRepository, companyPagePriceListRepository, companyPageCompanyServiceRepository);
         ResponseEntity<?> re = companyPageController.getById(123232L);
-        assertThat(re.getStatusCode());
+        assertEquals(HttpStatus.NOT_FOUND, re.getStatusCode());
     }
+
     @Test
     @Sql("/db-scripts.company-page/companyPage-it.sql")
     @Transactional
     void doesGetServiceFromDB() {
         CompanyPageController companyPageController = new CompanyPageController(companyPageCompanyRepository, companyPageCompanyRegionsRepository, companyPagePriceListRepository, companyPageCompanyServiceRepository);
         ResponseEntity<?> re = companyPageController.getById(1L);
-        assertThat(companyPageController.getCompanyPageObject().getCompany().equals("S&P Global"));
+        assertEquals("S&P Global", companyPageController.getCompanyPageObject().getCompany().getName());
     }
 }

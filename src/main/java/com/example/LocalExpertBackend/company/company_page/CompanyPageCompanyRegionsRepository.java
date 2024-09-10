@@ -1,11 +1,11 @@
-package com.example.LocalExpertBackend.company.companyPage;
+package com.example.LocalExpertBackend.company.company_page;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("CompanyPageCompanyRegionsRepository")
+@Repository("companyPageCompanyRegionsRepository")
 public interface CompanyPageCompanyRegionsRepository extends JpaRepository<CompanyPageCompanyRegionEntity, Long> {
     List<CompanyPageCompanyRegionEntity> findByCompanyId(Long id);
 }

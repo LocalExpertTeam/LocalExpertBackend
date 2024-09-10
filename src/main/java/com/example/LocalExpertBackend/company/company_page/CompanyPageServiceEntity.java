@@ -1,4 +1,4 @@
-package com.example.LocalExpertBackend.company.companyPage;
+package com.example.LocalExpertBackend.company.company_page;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -9,8 +9,8 @@ import lombok.*;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "province")
-public class CompanyPageProvinceEntity {
+@Table(name = "service")
+public class CompanyPageServiceEntity {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

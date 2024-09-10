@@ -22,8 +22,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
                             .requestMatchers("/login", "/register", "/confirm",
-                                    "/company-finder", "/company-list/**", "/comments-about-customer/**", "/company-page/*").permitAll()
-                            .requestMatchers("/logout", "/current-user").authenticated()
+                                    "/company-finder", "/company-list/**", "/comments-about-customer/**",
+                                    "/company-page/*").permitAll()
+                            .requestMatchers("/logout", "/current-user", "/customer-details/*").authenticated()
                             .anyRequest().denyAll());
         http.logout(logout -> logout.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()));
         http.headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));

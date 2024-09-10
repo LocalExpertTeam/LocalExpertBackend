@@ -1,5 +1,6 @@
-package com.example.LocalExpertBackend.company.companyPage;
+package com.example.LocalExpertBackend.company.company_page;
 
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +12,12 @@ import java.util.List;
 
 @RestController
 public class CompanyPageController {
-    private CompanyPageCompanyRepository companyPageCompanyRepository;
-    private CompanyPageCompanyRegionsRepository companyPageCompanyRegionsRepository;
-    private CompanyPagePriceListRepository companyPagePriceListRepository;
-    private CompanyPageCompanyServiceRepository companyPageCompanyServiceRepository;
+    private final CompanyPageCompanyRepository companyPageCompanyRepository;
+    private final CompanyPageCompanyRegionsRepository companyPageCompanyRegionsRepository;
+    private final CompanyPagePriceListRepository companyPagePriceListRepository;
+    private final CompanyPageCompanyServiceRepository companyPageCompanyServiceRepository;
 
+    @Getter
     private CompanyPageObject companyPageObject;
 
     public CompanyPageController(CompanyPageCompanyRepository companyPageCompanyRepository, CompanyPageCompanyRegionsRepository companyPageCompanyRegionsRepository, CompanyPagePriceListRepository companyPagePriceListRepository, CompanyPageCompanyServiceRepository companyPageCompanyServiceRepository) {
@@ -30,15 +32,15 @@ public class CompanyPageController {
         if (companyPageCompanyRepository.findById(id).isEmpty()) {
             return new ResponseEntity<>("", HttpStatus.NOT_FOUND);
         }
-        List<CompanyPageCompanyRegionEntity> CompanyRegionsList = companyPageCompanyRegionsRepository.findByCompanyId(id);
+        List<CompanyPageCompanyRegionEntity> companyRegionsList = companyPageCompanyRegionsRepository.findByCompanyId(id);
         List<RegionsObject> regionsList = new ArrayList<>();
-        for (CompanyPageCompanyRegionEntity companyRegions : CompanyRegionsList.toArray(new CompanyPageCompanyRegionEntity[0])) {
+        for (CompanyPageCompanyRegionEntity companyRegions : companyRegionsList.toArray(new CompanyPageCompanyRegionEntity[0])) {
             RegionsObject regionsObject = new RegionsObject(companyRegions.getCity().getValue(), companyRegions.getCity().getProvince().getName());
             regionsList.add(regionsObject);
         }
-        List<CompanyPageCompanyServiceEntity> CompanyServiceList = companyPageCompanyServiceRepository.findByCompanyId(id);
+        List<CompanyPageCompanyServiceEntity> companyServiceList = companyPageCompanyServiceRepository.findByCompanyId(id);
         List<String> serviceList = new ArrayList<>();
-        for (CompanyPageCompanyServiceEntity companyService : CompanyServiceList.toArray(new CompanyPageCompanyServiceEntity[0])) {
+        for (CompanyPageCompanyServiceEntity companyService : companyServiceList.toArray(new CompanyPageCompanyServiceEntity[0])) {
 
             serviceList.add(companyService.getService().getName());
         }

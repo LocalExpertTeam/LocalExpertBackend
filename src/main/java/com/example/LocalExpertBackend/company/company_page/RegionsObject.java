@@ -1,4 +1,4 @@
-package com.example.LocalExpertBackend.company.companyPage;
+package com.example.LocalExpertBackend.company.company_page;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RegionsObject {
-    private String City;
-    private String Province;
+    private String city;
+    private String province;
 }

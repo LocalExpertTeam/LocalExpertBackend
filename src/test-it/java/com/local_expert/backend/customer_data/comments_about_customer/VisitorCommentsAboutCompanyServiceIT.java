@@ -50,7 +50,7 @@ class VisitorCommentsAboutCompanyServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/comments_about_account/visitor-comments-about-account-service-it.sql")
+    @Sql("/db-scripts/customer_data/comments-about-account-service-it.sql")
     @Transactional
     void shouldReturnCommentsAboutAccountPageSortedByNameDESC() {
         //Given
@@ -68,7 +68,7 @@ class VisitorCommentsAboutCompanyServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/comments_about_account/visitor-comments-about-account-service-it.sql")
+    @Sql("/db-scripts/customer_data/comments-about-account-service-it.sql")
     @Transactional
     void shouldReturnCommentsAboutAccountPageSortedByDateDESC() {
         //Given
@@ -86,7 +86,7 @@ class VisitorCommentsAboutCompanyServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/comments_about_account/visitor-comments-about-account-service-it.sql")
+    @Sql("/db-scripts/customer_data/comments-about-account-service-it.sql")
     @Transactional
     void shouldReturnCommentsAboutAccountPageSortedByRateASC() {
         //Given
@@ -104,7 +104,7 @@ class VisitorCommentsAboutCompanyServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/comments_about_account/visitor-comments-about-account-service-it.sql")
+    @Sql("/db-scripts/customer_data/comments-about-account-service-it.sql")
     @Transactional
     void shouldReturnProperPageParameters() {
         //Given
@@ -123,7 +123,7 @@ class VisitorCommentsAboutCompanyServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/comments_about_account/visitor-comments-about-account-service-it.sql")
+    @Sql("/db-scripts/customer_data/comments-about-account-service-it.sql")
     @Transactional
     void shouldReturnPageWithoutComments() {
         //Given
@@ -139,7 +139,7 @@ class VisitorCommentsAboutCompanyServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/comments_about_account/visitor-comments-about-account-service-it.sql")
+    @Sql("/db-scripts/customer_data/comments-about-account-service-it.sql")
     @Transactional
     void shouldReturnProperCommentsAboutAccountPageSortedByNameDESC() {
         //Given

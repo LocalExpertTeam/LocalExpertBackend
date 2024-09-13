@@ -66,7 +66,7 @@ class CompanyCustomerDetailsServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/company/customer_details/company-customer-details-service-it.sql")
+    @Sql("/db-scripts/customer_data/customer-details-service-it.sql")
     @Transactional
     void shouldReturnCustomerDetailsWithProperDataWhenUserLoggedInAsCompany() {
         //Given
@@ -83,7 +83,7 @@ class CompanyCustomerDetailsServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/company/customer_details/company-customer-details-service-it.sql")
+    @Sql("/db-scripts/customer_data/customer-details-service-it.sql")
     @Transactional
     void shouldReturnCustomerDetailsWithProperDataWhenUserLoggedInAsCompanyPremium() {
         //Given
@@ -100,7 +100,7 @@ class CompanyCustomerDetailsServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/company/customer_details/company-customer-details-service-it.sql")
+    @Sql("/db-scripts/customer_data/customer-details-service-it.sql")
     @Transactional
     void shouldThrowAccessDeniedExceptionWhenUserIsNotLoggedIn() {
         //Given
@@ -118,7 +118,7 @@ class CompanyCustomerDetailsServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/company/customer_details/company-customer-details-service-it.sql")
+    @Sql("/db-scripts/customer_data/customer-details-service-it.sql")
     @Transactional
     void shouldThrowAccessDeniedExceptionWhenUserIsNotOnCompanyAccount() {
         //Given

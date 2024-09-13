@@ -66,7 +66,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldSaveNewCustomerAccount() {
         //Given
@@ -93,7 +93,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldSaveNewCompanyAccount() {
         //Given
@@ -122,7 +122,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenEmailIsAlreadyInUse() {
         //Given
@@ -149,7 +149,7 @@ class UserAccountRegistrationServiceIT {
 
     @ParameterizedTest
     @ValueSource(strings = {"paul@gmail.com.", "@gmail.com", "paulgmail.com", "paulgmailcom"})
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenEmailInWrongFormat(String email) {
         //Given
@@ -176,7 +176,7 @@ class UserAccountRegistrationServiceIT {
 
     @ParameterizedTest
     @MethodSource("provideWrongPasswords")
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenPasswordInWrongFormat(String password, String exceptionMessage) {
         //Given
@@ -202,7 +202,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenAccountTypeNotProvided() {
         //Given
@@ -227,7 +227,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenUserFirstNameNotProvided() {
         //Given
@@ -252,7 +252,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenUserLastNameNotProvided() {
         //Given
@@ -277,7 +277,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenTooLongPhoneProvided() {
         //Given
@@ -303,7 +303,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenCompanyNameNotProvided() {
         //Given
@@ -330,7 +330,7 @@ class UserAccountRegistrationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/registration/user-registration-service-it.sql")
+    @Sql("/db-scripts/account_management/registration/user-registration-service-it.sql")
     @Transactional
     void shouldThrowExceptionWhenCompanyNipNotProvided() {
         //Given

@@ -47,7 +47,7 @@ class UserAccountConfirmationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/confirmation/user-confirmation-service-it.sql")
+    @Sql("/db-scripts/account_management/confirmation/user-confirmation-service-it.sql")
     @Transactional
     void shouldConfirmAccountAndRemoveCode() {
         //Given
@@ -68,7 +68,7 @@ class UserAccountConfirmationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/confirmation/user-confirmation-service-it.sql")
+    @Sql("/db-scripts/account_management/confirmation/user-confirmation-service-it.sql")
     @Transactional
     void shouldThrowApiRequestExceptionWhenCodeDoesNotExist() {
         //Given
@@ -88,7 +88,7 @@ class UserAccountConfirmationServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/confirmation/user-confirmation-service-it.sql")
+    @Sql("/db-scripts/account_management/confirmation/user-confirmation-service-it.sql")
     @Transactional
     void shouldThrowApiRequestExceptionWhenCodeIsWrong() {
         //Given

@@ -43,7 +43,7 @@ class CustomUserDetailsServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/authentication/user-authentication-service-it.sql")
+    @Sql("/db-scripts/account_management/authentication/user-authentication-service-it.sql")
     @Transactional
     void shouldFindUser() {
         //Given
@@ -58,7 +58,7 @@ class CustomUserDetailsServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/user/authentication/user-authentication-service-it.sql")
+    @Sql("/db-scripts/account_management/authentication/user-authentication-service-it.sql")
     @Transactional
     void shouldThrowUsernameNotFoundException() {
         //Given

@@ -51,7 +51,7 @@ class VisitorCompanyListServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/company_list/visitor-company-list-service-it.sql")
+    @Sql("/db-scripts/company_data/company-list-service-it.sql")
     @Transactional
     void shouldReturnCompanyListPageWithProperRate() {
         //Given
@@ -68,7 +68,7 @@ class VisitorCompanyListServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/company_list/visitor-company-list-service-it.sql")
+    @Sql("/db-scripts/company_data/company-list-service-it.sql")
     @Transactional
     void shouldReturnCompanyListPageSortedByNameDESC() {
         //Given
@@ -85,7 +85,7 @@ class VisitorCompanyListServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/company_list/visitor-company-list-service-it.sql")
+    @Sql("/db-scripts/company_data/company-list-service-it.sql")
     @Transactional
     void shouldReturnCompanyListPageSortedByAddedDateASC() {
         //Given
@@ -102,7 +102,7 @@ class VisitorCompanyListServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/company_list/visitor-company-list-service-it.sql")
+    @Sql("/db-scripts/company_data/company-list-service-it.sql")
     @Transactional
     void shouldReturnCompanyListPageWithoutRates() {
         //Given
@@ -120,7 +120,7 @@ class VisitorCompanyListServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/company_list/visitor-company-list-service-it.sql")
+    @Sql("/db-scripts/company_data/company-list-service-it.sql")
     @Transactional
     void shouldReturnCompanyListPageWithoutCompanies() {
         //Given
@@ -136,7 +136,7 @@ class VisitorCompanyListServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/company_list/visitor-company-list-service-it.sql")
+    @Sql("/db-scripts/company_data/company-list-service-it.sql")
     @Transactional
     void shouldReturnProperPageParameters() {
         //Given
@@ -155,7 +155,7 @@ class VisitorCompanyListServiceIT {
     }
 
     @Test
-    @Sql("/db-scripts/visitor/company_list/visitor-company-list-service-it.sql")
+    @Sql("/db-scripts/company_data/company-list-service-it.sql")
     @Transactional
     void shouldReturnCompanyListPageWithProperCompanyParameters() {
         //Given

@@ -52,7 +52,7 @@ class CompanyPageIT {
     }
 
     @Test
-    @Sql("/db-scripts.company-page/companyPage-it.sql")
+    @Sql("/db-scripts/company_data/company-page-it.sql")
     @Transactional
     void doesGetServiceFromDB() {
         CompanyPageController companyPageController = new CompanyPageController(companyPageCompanyRepository, companyPageCompanyRegionsRepository, companyPagePriceListRepository, companyPageCompanyServiceRepository);

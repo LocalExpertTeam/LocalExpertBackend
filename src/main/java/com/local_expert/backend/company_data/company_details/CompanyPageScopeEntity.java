@@ -1,21 +1,22 @@
-package com.local_expert.backend.company_data.company_page;
+package com.local_expert.backend.company_data.company_details;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-@NoArgsConstructor
-@Table(name = "service")
-public class CompanyPageServiceEntity {
+@Table(name = "scope")
+public class CompanyPageScopeEntity {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
-    private String name;
+    private Long value;
+
 }

@@ -1,4 +1,4 @@
-package com.local_expert.backend.company_data.company_page;
+package com.local_expert.backend.company_data.company_details;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

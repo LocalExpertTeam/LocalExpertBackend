@@ -1,4 +1,4 @@
-package com.local_expert.backend.company_data.company_page;
+package com.local_expert.backend.company_data.company_details;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -27,24 +27,24 @@ public class CompanyPageController {
         this.companyPageCompanyServiceRepository = companyPageCompanyServiceRepository;
     }
 
-    @GetMapping("/company-page/{id}")
-    public ResponseEntity<Object> getById(@PathVariable Long id) {
-        if (companyPageCompanyRepository.findById(id).isEmpty()) {
+    @GetMapping("/company-details/{companyId}")
+    public ResponseEntity<Object> getById(@PathVariable Long companyId) {
+        if (companyPageCompanyRepository.findById(companyId).isEmpty()) {
             return new ResponseEntity<>("", HttpStatus.NOT_FOUND);
         }
-        List<CompanyPageCompanyRegionEntity> companyRegionsList = companyPageCompanyRegionsRepository.findByCompanyId(id);
+        List<CompanyPageCompanyRegionEntity> companyRegionsList = companyPageCompanyRegionsRepository.findByCompanyId(companyId);
         List<RegionsObject> regionsList = new ArrayList<>();
         for (CompanyPageCompanyRegionEntity companyRegions : companyRegionsList.toArray(new CompanyPageCompanyRegionEntity[0])) {
             RegionsObject regionsObject = new RegionsObject(companyRegions.getCity().getValue(), companyRegions.getCity().getProvince().getName());
             regionsList.add(regionsObject);
         }
-        List<CompanyPageCompanyServiceEntity> companyServiceList = companyPageCompanyServiceRepository.findByCompanyId(id);
+        List<CompanyPageCompanyServiceEntity> companyServiceList = companyPageCompanyServiceRepository.findByCompanyId(companyId);
         List<String> serviceList = new ArrayList<>();
         for (CompanyPageCompanyServiceEntity companyService : companyServiceList.toArray(new CompanyPageCompanyServiceEntity[0])) {
 
             serviceList.add(companyService.getService().getName());
         }
-        companyPageObject = new CompanyPageObject(companyPageCompanyRepository.findById(id).get(), regionsList, serviceList, companyPagePriceListRepository.getByCompanyId(id));
+        companyPageObject = new CompanyPageObject(companyPageCompanyRepository.findById(companyId).get(), regionsList, serviceList, companyPagePriceListRepository.getByCompanyId(companyId));
 
         return new ResponseEntity<>(companyPageObject, HttpStatus.OK);
     }

@@ -1,4 +1,4 @@
-package com.local_expert.backend.company_data.company_page;
+package com.local_expert.backend.company_data.company_details;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -9,21 +9,19 @@ import lombok.*;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "company_region")
-public class CompanyPageCompanyRegionEntity {
+@Table(name = "company_service")
+public class CompanyPageCompanyServiceEntity {
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @NonNull
     private Long companyId;
 
     @ManyToOne
-    @JoinColumn(name = "region_id")
-    private CompanyPageCityEntity city;
+    @JoinColumn(name = "service_id")
+    private CompanyPageServiceEntity service;
 
-    @ManyToOne
-    @JoinColumn(name = "scope_id")
-    private CompanyPageScopeEntity scope;
 }

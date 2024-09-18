@@ -1,5 +1,6 @@
 package com.local_expert.backend.company_data.company_page;
 
+import com.local_expert.backend.company_data.company_details.*;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

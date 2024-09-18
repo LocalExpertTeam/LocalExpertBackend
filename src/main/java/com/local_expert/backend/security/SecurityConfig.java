@@ -23,7 +23,7 @@ public class SecurityConfig {
                         authorizationManagerRequestMatcherRegistry
                             .requestMatchers("/login", "/register", "/confirm",
                                     "/company-finder", "/company-list/**", "/comments-about-customer/**",
-                                    "/company-page/*").permitAll()
+                                    "/company-details/*").permitAll()
                             .requestMatchers("/logout", "/current-user", "/customer-details/*").authenticated()
                             .anyRequest().denyAll());
         http.logout(logout -> logout.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()));

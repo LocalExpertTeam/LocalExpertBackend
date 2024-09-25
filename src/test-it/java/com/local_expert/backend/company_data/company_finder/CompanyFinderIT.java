@@ -43,7 +43,7 @@ class CompanyFinderIT {
     }
 
     @Test
-    @Sql("/db-scripts/company_data/company-finder/company-finder-controller-scope-it.sql")
+    @Sql("/db-scripts/company_data/company_finder/company-finder-controller-scope-it.sql")
     @Transactional
     void doesGetScopeFromDB() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);
@@ -52,7 +52,7 @@ class CompanyFinderIT {
     }
 
     @Test
-    @Sql("/db-scripts/company_data/company-finder/company-finder-controller-scope-it.sql")
+    @Sql("/db-scripts/company_data/company_finder/company-finder-controller-scope-it.sql")
     @Transactional
     void doesOrderScopeAsc() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);
@@ -61,8 +61,8 @@ class CompanyFinderIT {
     }
 
     @Test
-    @Sql(scripts = "/db-scripts/company_data/company-finder/company-finder-controller-province-it.sql", config = @SqlConfig(commentPrefix = "`"))
-    @Sql("/db-scripts/company_data/company-finder/company-finder-controller-city-it.sql")
+    @Sql(scripts = "/db-scripts/company_data/company_finder/company-finder-controller-province-it.sql", config = @SqlConfig(commentPrefix = "`"))
+    @Sql("/db-scripts/company_data/company_finder/company-finder-controller-city-it.sql")
     @Transactional
     void doesGetCityFromDB() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);
@@ -71,8 +71,8 @@ class CompanyFinderIT {
     }
 
     @Test
-    @Sql(scripts = "/db-scripts/company_data/company-finder/company-finder-controller-province-it.sql", config = @SqlConfig(commentPrefix = "`"))
-    @Sql("/db-scripts/company_data/company-finder/company-finder-controller-city-it.sql")
+    @Sql(scripts = "/db-scripts/company_data/company_finder/company-finder-controller-province-it.sql", config = @SqlConfig(commentPrefix = "`"))
+    @Sql("/db-scripts/company_data/company_finder/company-finder-controller-city-it.sql")
     @Transactional
     void doesOrderCityAsc() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);
@@ -82,7 +82,7 @@ class CompanyFinderIT {
     }
 
     @Test
-    @Sql("/db-scripts/company_data/company-finder/company-finder-controller-service-it.sql")
+    @Sql("/db-scripts/company_data/company_finder/company-finder-controller-service-it.sql")
     @Transactional
     void doesGetServiceFromDB() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);
@@ -91,7 +91,7 @@ class CompanyFinderIT {
     }
 
     @Test
-    @Sql("/db-scripts/company_data/company-finder/company-finder-controller-service-it.sql")
+    @Sql("/db-scripts/company_data/company_finder/company-finder-controller-service-it.sql")
     @Transactional
     void doesOrderServiceAsc() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);

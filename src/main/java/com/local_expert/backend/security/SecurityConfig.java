@@ -30,6 +30,7 @@ public class SecurityConfig {
         http.logout(logout -> logout.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()));
         http.headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
         http.cors(Customizer.withDefaults());
+        http.exceptionHandling(exceptions -> exceptions.authenticationEntryPoint(new CustomAuthenticationEntryPoint()));
 
         return http.build();
     }

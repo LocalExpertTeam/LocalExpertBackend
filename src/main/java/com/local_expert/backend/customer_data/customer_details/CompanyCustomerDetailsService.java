@@ -18,9 +18,7 @@ class CompanyCustomerDetailsService {
 
         CompanyCustomerDetailsCustomerEntity customerEntity = repository.findById(customerId);
 
-        if (user == null) {
-            throw new AccessDeniedException("Access denied for non-logged in users.", HttpStatus.UNAUTHORIZED);
-        } else if (isNonCompanyUser(user)) {
+        if (isNonCompanyUser(user)) {
             throw new AccessDeniedException("Access denied for " + user.getAccountType() + " account.", HttpStatus.FORBIDDEN);
         }
 

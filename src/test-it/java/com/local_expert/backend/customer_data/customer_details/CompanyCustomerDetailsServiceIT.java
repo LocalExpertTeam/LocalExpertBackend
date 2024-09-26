@@ -102,24 +102,6 @@ class CompanyCustomerDetailsServiceIT {
     @Test
     @Sql("/db-scripts/customer_data/customer-details-service-it.sql")
     @Transactional
-    void shouldThrowAccessDeniedExceptionWhenUserIsNotLoggedIn() {
-        //Given
-        CompanyCustomerDetailsService customerDetailsService = new CompanyCustomerDetailsService(repository);
-
-        //When
-        AccessDeniedException exception =
-                assertThrows(AccessDeniedException.class, () -> customerDetailsService.getCustomerDetails(null, 1));
-
-        prepareCustomerDetails();
-
-        //Then
-        assertEquals("Access denied for non-logged in users.", exception.getMessage());
-        assertEquals(HttpStatus.UNAUTHORIZED, exception.getHttpStatusCode());
-    }
-
-    @Test
-    @Sql("/db-scripts/customer_data/customer-details-service-it.sql")
-    @Transactional
     void shouldThrowAccessDeniedExceptionWhenUserIsNotOnCompanyAccount() {
         //Given
         CompanyCustomerDetailsService customerDetailsService = new CompanyCustomerDetailsService(repository);

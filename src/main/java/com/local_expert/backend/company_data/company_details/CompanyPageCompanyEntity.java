@@ -1,6 +1,7 @@
 package com.local_expert.backend.company_data.company_details;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.local_expert.backend.enums.ContactMethod;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -45,7 +46,8 @@ public class CompanyPageCompanyEntity {
     private String preferredContactTime;
 
     @NonNull
-    private String preferredContactMethod;
+    @Enumerated(EnumType.STRING)
+    private ContactMethod preferredContactMethod;
 
     @NonNull
     private Boolean hasFreePricing;

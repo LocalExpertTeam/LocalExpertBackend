@@ -25,7 +25,7 @@ public class SecurityConfig {
                                     "/company-finder", "/company-list/**", "/comments-about-customer/**",
                                     "/company-details/*").permitAll()
                             .requestMatchers("/logout", "/current-user", "/customer-details/*",
-                                            "/chat-list/*").authenticated()
+                                            "/chat-list/*", "/chat-customers-list/*").authenticated()
                             .anyRequest().denyAll());
         http.logout(logout -> logout.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler()));
         http.headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));

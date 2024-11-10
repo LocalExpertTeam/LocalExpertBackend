@@ -29,22 +29,9 @@ public class CompanyFinderController {
     @GetMapping("/company-finder")
     public ResponseEntity<Object> getAll() {
         List<ServiceEntity> serviceList = serviceRepository.findAllByOrderByNameAsc();
-        List<String> serviceNameList = new ArrayList<>();
-        for (ServiceEntity service : serviceList) {
-            serviceNameList.add(service.getName());
-        }
         List<CityEntity> cityList = companyFinderCityRepository.findAllByOrderByValueAsc();
-        List<List<String>> cityNameProvinceList = new ArrayList<>();
-        for (CityEntity city : cityList) {
-            List<String> pom = List.of(city.getValue(), city.getProvince().getName());
-            cityNameProvinceList.add(pom);
-        }
         List<ScopeEntity> scopeList = companyFinderScopeRepository.findAllByOrderByValueAsc();
-        List<Long> scopeValueList = new ArrayList<>();
-        for (ScopeEntity scope : scopeList) {
-            scopeValueList.add(scope.getValue());
-        }
-        companyFinderObject = new CompanyFinderObject(cityNameProvinceList, serviceNameList, scopeValueList);
+        companyFinderObject = new CompanyFinderObject(cityList, serviceList, scopeList);
         return new ResponseEntity<>(companyFinderObject, HttpStatus.OK);
 
     }

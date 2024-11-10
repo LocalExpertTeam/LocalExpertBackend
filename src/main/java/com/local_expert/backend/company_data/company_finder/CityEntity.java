@@ -1,5 +1,6 @@
 package com.local_expert.backend.company_data.company_finder;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +14,7 @@ import lombok.*;
 public class CityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @NonNull
@@ -21,5 +23,8 @@ public class CityEntity {
     @ManyToOne
     @JoinColumn(name = "province_id")
     private ProvinceEntity province;
+
+    @NonNull
+    private String tag;
 }
 

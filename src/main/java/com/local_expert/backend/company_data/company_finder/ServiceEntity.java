@@ -19,4 +19,7 @@ public class ServiceEntity {
 
     @NonNull
     private String name;
+
+    @NonNull
+    private String tag;
 }

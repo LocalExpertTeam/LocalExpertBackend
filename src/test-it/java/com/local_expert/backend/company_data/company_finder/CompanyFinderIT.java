@@ -57,7 +57,7 @@ class CompanyFinderIT {
     void doesOrderScopeAsc() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);
         companyFinderController.getAll();
-        assertTrue(companyFinderController.getCompanyFinderObject().getScope().get(1) > companyFinderController.getCompanyFinderObject().getScope().get(0));
+        assertTrue(companyFinderController.getCompanyFinderObject().getScope().get(1).getValue() > companyFinderController.getCompanyFinderObject().getScope().get(0).getValue());
     }
 
     @Test
@@ -77,7 +77,7 @@ class CompanyFinderIT {
     void doesOrderCityAsc() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);
         companyFinderController.getAll();
-        int diff = companyFinderController.getCompanyFinderObject().getCity().get(1).get(0).compareTo(companyFinderController.getCompanyFinderObject().getCity().get(0).get(0));
+        int diff = companyFinderController.getCompanyFinderObject().getCity().get(1).getValue().compareTo(companyFinderController.getCompanyFinderObject().getCity().get(0).getValue());
         assertTrue(diff > 0);
     }
 
@@ -96,7 +96,7 @@ class CompanyFinderIT {
     void doesOrderServiceAsc() {
         CompanyFinderController companyFinderController = new CompanyFinderController(serviceRepository, companyFinderCityRepository, companyFinderScopeRepository);
         companyFinderController.getAll();
-        int diff = companyFinderController.getCompanyFinderObject().getService().get(1).compareTo(companyFinderController.getCompanyFinderObject().getService().get(0));
+        int diff = companyFinderController.getCompanyFinderObject().getService().get(1).getName().compareTo(companyFinderController.getCompanyFinderObject().getService().get(0).getName());
         assertTrue(diff > 0);
     }
 

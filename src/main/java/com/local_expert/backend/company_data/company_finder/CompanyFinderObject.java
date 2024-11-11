@@ -13,9 +13,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class CompanyFinderObject {
-    private List<List<String>> city;
-    private List<String> service;
-    private List<Long> scope;
+    private List<CityEntity> city;
+    private List<ServiceEntity> service;
+    private List<ScopeEntity> scope;
 
 
 }

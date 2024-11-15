@@ -30,8 +30,19 @@ public class CompanyFinderController {
     public ResponseEntity<Object> getAll() {
         List<ServiceEntity> serviceList = serviceRepository.findAllByOrderByNameAsc();
         List<CityEntity> cityList = companyFinderCityRepository.findAllByOrderByValueAsc();
+        List<BetterCity> betterCityList = new ArrayList<>();
+        for (CityEntity city : cityList) {
+            String bcString = city.getValue() + ", " + city.getProvince().getName();
+            BetterCity bc = new BetterCity(bcString, city.getTag());
+            betterCityList.add(bc);
+        }
         List<ScopeEntity> scopeList = companyFinderScopeRepository.findAllByOrderByValueAsc();
-        companyFinderObject = new CompanyFinderObject(cityList, serviceList, scopeList);
+        List<BetterScope> betterScopeList = new ArrayList<>();
+        for (ScopeEntity scope : scopeList) {
+            BetterScope bs = new BetterScope(scope.getValue(), scope.getValue());
+            betterScopeList.add(bs);
+        }
+        companyFinderObject = new CompanyFinderObject(betterCityList, serviceList, betterScopeList);
         return new ResponseEntity<>(companyFinderObject, HttpStatus.OK);
 
     }

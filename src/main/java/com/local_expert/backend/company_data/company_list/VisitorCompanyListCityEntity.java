@@ -16,6 +16,6 @@ public class VisitorCompanyListCityEntity {
     private Long id;
 
     @NonNull
-    @Column(name = "value")
+    @Column(name = "name")
     private String city;
 }

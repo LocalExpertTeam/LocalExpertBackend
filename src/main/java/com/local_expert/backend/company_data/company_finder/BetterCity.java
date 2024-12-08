@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class BetterCity {
-    private String value;
+    private String name;
     private String tag;
 }

@@ -29,10 +29,10 @@ public class CompanyFinderController {
     @GetMapping("/company-finder")
     public ResponseEntity<Object> getAll() {
         List<ServiceEntity> serviceList = serviceRepository.findAllByOrderByNameAsc();
-        List<CityEntity> cityList = companyFinderCityRepository.findAllByOrderByValueAsc();
+        List<CityEntity> cityList = companyFinderCityRepository.findAllByOrderByNameAsc();
         List<BetterCity> betterCityList = new ArrayList<>();
         for (CityEntity city : cityList) {
-            String bcString = city.getValue() + ", " + city.getProvince().getName();
+            String bcString = city.getName() + ", " + city.getProvince().getName();
             BetterCity bc = new BetterCity(bcString, city.getTag());
             betterCityList.add(bc);
         }

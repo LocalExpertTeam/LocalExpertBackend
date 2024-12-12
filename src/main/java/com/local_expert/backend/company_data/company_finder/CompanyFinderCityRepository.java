@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository("companyFinderCityRepository")
 interface CompanyFinderCityRepository extends JpaRepository<CityEntity, Long> {
-    List<CityEntity> findAllByOrderByValueAsc();
+    List<CityEntity> findAllByOrderByNameAsc();
 }

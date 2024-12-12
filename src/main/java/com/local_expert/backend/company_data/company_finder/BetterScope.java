@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class BetterScope {
-    private Long value;
+    private Long name;
     private Long tag;
 }

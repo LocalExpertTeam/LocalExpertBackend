@@ -19,7 +19,7 @@ public class CompanyPageCityEntity {
     private Long id;
 
     @NonNull
-    private String value;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "province_id")

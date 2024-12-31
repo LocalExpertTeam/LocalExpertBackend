@@ -15,6 +15,6 @@ public class CompanyPageObject {
     private CompanyPageCompanyEntity company;
     private List<RegionsObject> regions;
     private List<String> services;
-    private List<?> priceList;
+    private List<CompanyPagePriceListEntity> priceList;
 
 }

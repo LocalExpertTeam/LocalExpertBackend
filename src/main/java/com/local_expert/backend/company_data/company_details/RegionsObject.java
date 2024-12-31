@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class RegionsObject {
     private String city;
-    private String province;
+    private Long scope;
 }

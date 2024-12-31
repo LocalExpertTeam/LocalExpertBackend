@@ -1,6 +1,5 @@
-package com.local_expert.backend.company_data.company_page;
+package com.local_expert.backend.company_data.company_details;
 
-import com.local_expert.backend.company_data.company_details.*;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
-class CompanyPageIT {
+class CompanyDetailsIT {
     @Container
     @ServiceConnection
     static MySQLContainer<?> mySQLContainer = new MySQLContainer<>("mysql:latest");
@@ -53,11 +52,24 @@ class CompanyPageIT {
     }
 
     @Test
-    @Sql("/db-scripts/company_data/company-page-it.sql")
+    @Sql("/db-scripts/company_data/company_details/company-details-it.sql")
     @Transactional
     void doesGetServiceFromDB() {
+        //Given
         CompanyPageController companyPageController = new CompanyPageController(companyPageCompanyRepository, companyPageCompanyRegionsRepository, companyPagePriceListRepository, companyPageCompanyServiceRepository);
+
+        //When
         companyPageController.getById(1L);
+
+        //Then
         assertEquals("S&P Global", companyPageController.getCompanyPageObject().getCompany().getName());
+
+        assertEquals("Dekarstwo", companyPageController.getCompanyPageObject().getServices().get(0));
+        assertEquals("Malowanie", companyPageController.getCompanyPageObject().getServices().get(1));
+
+        assertEquals("Sulechów, Lubuskie", companyPageController.getCompanyPageObject().getRegions().get(0).getCity());
+
+        assertEquals("A", companyPageController.getCompanyPageObject().getPriceList().get(0).getServiceName());
+        assertEquals("B", companyPageController.getCompanyPageObject().getPriceList().get(1).getServiceName());
     }
 }

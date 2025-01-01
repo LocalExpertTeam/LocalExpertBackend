@@ -1,5 +1,6 @@
 package com.local_expert.backend.account_management.authentication;
 
+import com.local_expert.backend.enums.AccountType;
 import com.local_expert.backend.exception.ApiRequestException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -34,13 +35,13 @@ public class UserAuthenticationController {
         var user = (CustomUserDetails) auth.getPrincipal();
         log.info("User {} logged in.", user.getMail());
 
-        return new CurrentUser(user.getId(), user.getMail());
+        return new CurrentUser(user.getId(), user.getMail(), user.getAccountType());
     }
 
     @GetMapping("/current-user")
     public CurrentUser getCurrentUser(@AuthenticationPrincipal CustomUserDetails user) {
-        return new CurrentUser(user.getId(), user.getMail());
+        return new CurrentUser(user.getId(), user.getMail(), user.getAccountType());
     }
 
-    public record CurrentUser(long id, String nickname) {}
+    public record CurrentUser(long id, String nickname, AccountType accountType) {}
 }

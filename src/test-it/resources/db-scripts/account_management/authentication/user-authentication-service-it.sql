@@ -1,1 +1,2 @@
 INSERT INTO account (id, mail, password, account_type) VALUES (1, 'mat@gmail.com', '$2a$12$hADZ0I8UVBmsPfbTV1PFQOneF/Agl4Kz31vBpCaHWCt2fMTJm7oh2', 'CUSTOMER');
+INSERT INTO account (id, mail, password, account_type) VALUES (2, 'mat2@gmail.com', '$2a$12$hADZ0I8UVBmsPfbTV1PFQOneF/Agl4Kz31vBpCaHWCt2fMTJm7oh2', 'COMPANY');

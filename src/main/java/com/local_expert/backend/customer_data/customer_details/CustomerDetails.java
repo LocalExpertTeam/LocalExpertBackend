@@ -3,7 +3,7 @@ package com.local_expert.backend.customer_data.customer_details;
 import com.local_expert.backend.enums.ContactMethod;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 @Getter
@@ -18,7 +18,7 @@ public class CustomerDetails {
     private String profile;
     private String email;
     private String phone;
-    private Date creationDate;
+    private LocalDate creationDate;
     private String preferredContactTime;
     private ContactMethod preferredContactMethod;
     private HashMap<Integer, Integer> ratesNumber;

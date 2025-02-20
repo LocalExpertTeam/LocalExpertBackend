@@ -17,7 +17,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +36,7 @@ class CompanyCustomerDetailsServiceIT {
     public static final String PHONE = "999999183";
     public static final String PROFILE = null;
     public static final String MAIL = "mat@gmail.com";
-    public static final Date CREATION_DATE = Date.valueOf("2023-10-04");
+    public static final LocalDate CREATION_DATE = LocalDate.of(2023, 10, 4);
     public static final String PREFERRED_CONTACT_TIME = "Pn - Pt 8 - 16";
     public static final ContactMethod PREFERRED_CONTACT_METHOD = ContactMethod.PHONE;
     public static final CustomUserDetails COMPANY_USER = CustomUserDetails.builder()

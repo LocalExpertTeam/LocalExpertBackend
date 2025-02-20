@@ -14,7 +14,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -80,9 +80,9 @@ class VisitorCommentsAboutCompanyServiceIT {
                         Sort.Direction.DESC, DATE_SORT_PARAMETER);
 
         //Then
-        assertEquals(Date.valueOf("2023-11-14"), companyListPage.getComments().get(0).getCreationDate());
-        assertEquals(Date.valueOf("2023-11-04"), companyListPage.getComments().get(1).getCreationDate());
-        assertEquals(Date.valueOf("2023-10-04"), companyListPage.getComments().get(2).getCreationDate());
+        assertEquals(LocalDate.of(2023, 11, 14), companyListPage.getComments().get(0).getCreationDate());
+        assertEquals(LocalDate.of(2023, 11, 4), companyListPage.getComments().get(1).getCreationDate());
+        assertEquals(LocalDate.of(2023, 10, 4), companyListPage.getComments().get(2).getCreationDate());
     }
 
     @Test
@@ -157,7 +157,7 @@ class VisitorCommentsAboutCompanyServiceIT {
         assertNull(companyListPage.getComments().get(0).getAuthorProfilePicture());
         assertEquals("Very nice and kind client :)", companyListPage.getComments().get(0).getText());
         assertEquals(5.0, companyListPage.getComments().get(0).getRate());
-        assertEquals(Date.valueOf("2023-10-04"), companyListPage.getComments().get(0).getCreationDate());
+        assertEquals(LocalDate.of(2023, 10, 4), companyListPage.getComments().get(0).getCreationDate());
         assertEquals("In progress", companyListPage.getComments().get(0).getContractStatus());
     }
 }

@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Builder
@@ -21,7 +21,7 @@ class CompanyChatListMessageEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @ManyToMany
     @JoinTable(

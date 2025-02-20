@@ -3,7 +3,6 @@ package com.local_expert.backend.account_management.registration;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Builder
@@ -42,7 +41,7 @@ public class UserAccountRegistrationCompanyEntity {
     private String contactMail;
 
     @NonNull
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     private UserAccountRegistrationAccountEntity account;
@@ -56,7 +55,7 @@ public class UserAccountRegistrationCompanyEntity {
                                                     .ownerLastName(user.getLastName())
                                                     .nip(user.getNip())
                                                     .contactMail(user.getMail())
-                                                    .creationDate(Date.valueOf(LocalDate.now()))
+                                                    .creationDate(LocalDate.now())
                                                     .build();
         if (user.getKrs() != null) {
             companyEntity.setKrs(user.getKrs());

@@ -13,7 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -114,7 +114,7 @@ class CustomerChatListServiceIT {
         chats.add(ChatElement.builder()
                             .lastName("Wołek")
                             .firstName("Mateusz")
-                            .lastActualisation(Date.valueOf("2023-10-08"))
+                            .lastActualisation(LocalDate.of(2023, 10, 8))
                             .title("Bathroom renovation")
                             .contractId(1)
                             .status("In progress")

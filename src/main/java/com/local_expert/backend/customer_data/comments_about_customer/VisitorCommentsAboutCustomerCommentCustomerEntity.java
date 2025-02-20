@@ -3,7 +3,7 @@ package com.local_expert.backend.customer_data.comments_about_customer;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Builder
 @NoArgsConstructor
@@ -22,5 +22,5 @@ public class VisitorCommentsAboutCustomerCommentCustomerEntity {
     private double rate;
 
     @NonNull
-    private Date addedDate;
+    private LocalDate addedDate;
 }

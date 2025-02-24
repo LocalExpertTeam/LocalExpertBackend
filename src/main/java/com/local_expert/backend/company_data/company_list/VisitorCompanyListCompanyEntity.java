@@ -3,7 +3,7 @@ package com.local_expert.backend.company_data.company_list;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Builder
@@ -33,6 +33,6 @@ public class VisitorCompanyListCompanyEntity {
     @JoinColumn(name = "companyId")
     private List<VisitorCompanyListContractEntity> contracts;
 
-    private Date creationDate;
+    private LocalDate creationDate;
 }
 

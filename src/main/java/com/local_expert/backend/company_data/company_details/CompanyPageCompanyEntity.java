@@ -5,7 +5,7 @@ import com.local_expert.backend.enums.ContactMethod;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Builder
 @AllArgsConstructor
@@ -29,7 +29,7 @@ public class CompanyPageCompanyEntity {
     private String gallery;
 
     @NonNull
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @NonNull
     private Boolean hasFreeCommute;

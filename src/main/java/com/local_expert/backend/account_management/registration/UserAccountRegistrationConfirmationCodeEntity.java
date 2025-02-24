@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @Entity(name = "registration-confirmation-code-entity")
 @Table(name = "confirmation_code")
@@ -29,14 +29,11 @@ public class UserAccountRegistrationConfirmationCodeEntity {
     private UserAccountRegistrationAccountEntity user;
 
     @Builder.Default
-    private Date expiryDate = calculateExpiryDate(EXPIRATION_IN_TWO_DAYS);
+    private LocalDate expiryDate = calculateExpiryDate(EXPIRATION_IN_TWO_DAYS);
 
-    private static Date calculateExpiryDate(int expiryTimeInMinutes) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Timestamp(cal.getTime()
-                .getTime()));
-        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
-        return new Date(cal.getTime()
-                .getTime());
+    private static LocalDate calculateExpiryDate(int expiryTimeInMinutes) {
+        ZonedDateTime now = ZonedDateTime.now(ZoneId.systemDefault());
+        ZonedDateTime expiryDateTime = now.plusMinutes(expiryTimeInMinutes);
+        return expiryDateTime.toLocalDate();
     }
 }

@@ -3,7 +3,7 @@ package com.local_expert.backend.company_data.chat_list;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Builder
@@ -37,5 +37,5 @@ public class CustomerChatListContractEntity {
     private String title;
 
     @NonNull
-    private Date lastActualisation;
+    private LocalDate lastActualisation;
 }

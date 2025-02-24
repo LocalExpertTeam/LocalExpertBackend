@@ -2,7 +2,7 @@ package com.local_expert.backend.customer_data.chat_list;
 
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Builder
 @Getter
@@ -17,7 +17,7 @@ public class ChatElement {
     private String profile;
     private String status;
     private String title;
-    private Date lastActualisation;
+    private LocalDate lastActualisation;
     private boolean containsNewMessage;
     private boolean isEvaluationPossible;
     private boolean isAnswerPossible;

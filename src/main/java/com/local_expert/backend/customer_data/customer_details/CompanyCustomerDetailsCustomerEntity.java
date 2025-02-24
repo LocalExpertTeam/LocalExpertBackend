@@ -4,7 +4,7 @@ import com.local_expert.backend.enums.ContactMethod;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Builder
@@ -36,7 +36,7 @@ class CompanyCustomerDetailsCustomerEntity {
     private ContactMethod preferredContactMethod;
 
     @NonNull
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     private CompanyCustomerDetailsAccountEntity account;
